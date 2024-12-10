@@ -1,13 +1,44 @@
-<html>
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>Mindary Kft</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Black and White Stripes</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+        }
+        .stripe {
+            width: 100%;
+        }
+        .black {
+            background-color: black;
+        }
+        .white {
+            background-color: white;
+        }
+    </style>
 </head>
-
 <body>
-    <center>
-        <h1>&#x2764;&#xfe0f;Szeretlek Panna!&#x2764;&#xfe0f;</h1>
-    </center>
-</body>
+    <script>
+        function createStripes() {
+            const body = document.body;
+            body.innerHTML = ''; // Clear existing stripes
+            const stripeHeight = window.innerHeight / 10; // Adjust the number of stripes here
+            for (let i = 0; i < 10; i++) {
+                const stripe = document.createElement('div');
+                stripe.className = 'stripe';
+                stripe.style.height = `${stripeHeight}px`;
+                stripe.classList.add(i % 2 === 0 ? 'black' : 'white');
+                body.appendChild(stripe);
+            }
+        }
 
+        window.addEventListener('resize', createStripes);
+        window.addEventListener('load', createStripes);
+    </script>
+</body>
 </html>
