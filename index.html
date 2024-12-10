@@ -17,6 +17,8 @@
         }
         .stripe {
             height: 100vh;
+            min-width: 100px;
+            flex: 1;
         }
         .black {
             background-color: black;
@@ -29,42 +31,21 @@
             font-size: 5em;
             font-weight: bold;
             z-index: 1;
+            mix-blend-mode: difference;
+            color: white; /* Ensure text is visible initially */
         }
     </style>
 </head>
 <body>
-    <script>
-        function createStripes() {
-            const body = document.body;
-            body.innerHTML = ''; // Clear existing stripes
-            const stripeWidth = window.innerWidth / 10; // Adjust the number of stripes here
-            for (let i = 0; i < 10; i++) {
-                const stripe = document.createElement('div');
-                stripe.className = 'stripe';
-                stripe.style.width = `${stripeWidth}px`;
-                stripe.classList.add(i % 2 === 0 ? 'black' : 'white');
-                body.appendChild(stripe);
-            }
-
-            // Add text in the middle
-            const text = document.createElement('div');
-            text.className = 'text';
-            text.innerText = 'Mindary';
-            body.appendChild(text);
-
-            // Adjust text color based on background
-            const stripes = document.querySelectorAll('.stripe');
-            stripes.forEach((stripe, index) => {
-                if (index % 2 === 0) {
-                    text.style.color = 'white';
-                } else {
-                    text.style.color = 'black';
-                }
-            });
-        }
-
-        window.addEventListener('resize', createStripes);
-        window.addEventListener('load', createStripes);
-    </script>
+    <div class="stripe white"></div>
+    <div class="stripe black"></div>
+    <div class="stripe white"></div>
+    <div class="stripe black"></div>
+    <div class="stripe white"></div>
+    <div class="stripe black"></div>
+    <div class="stripe white"></div>
+    <div class="stripe black"></div>
+    <div class="stripe white"></div>
+    <div class="text">Mindary</div>
 </body>
 </html>
