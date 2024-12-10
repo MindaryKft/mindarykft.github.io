@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dynamic Vertical Black and White Stripes with Juventus Logo</title>
+    <title>Dynamic Vertical Black and White Stripes with Text</title>
     <style>
         body {
             margin: 0;
@@ -13,6 +13,7 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
+            position: relative;
         }
         .stripe {
             height: 100vh;
@@ -23,8 +24,10 @@
         .white {
             background-color: white;
         }
-        .logo {
+        .text {
             position: absolute;
+            font-size: 5em;
+            font-weight: bold;
             z-index: 1;
         }
     </style>
@@ -39,17 +42,25 @@
                 const stripe = document.createElement('div');
                 stripe.className = 'stripe';
                 stripe.style.width = `${stripeWidth}px`;
-                stripe.classList.add(i % 2 === 0 ? 'white' : 'black');
+                stripe.classList.add(i % 2 === 0 ? 'black' : 'white');
                 body.appendChild(stripe);
             }
 
-            // Add Juventus logo
-            const logo = document.createElement('img');
-            logo.src = 'https://upload.wikimedia.org/wikipedia/en/thumb/1/15/Juventus_FC_2017_logo.svg/1200px-Juventus_FC_2017_logo.svg.png'; // URL to Juventus logo
-            logo.alt = 'Juventus Logo';
-            logo.className = 'logo';
-            logo.style.width = '200px'; // Adjust the size as needed
-            body.appendChild(logo);
+            // Add text in the middle
+            const text = document.createElement('div');
+            text.className = 'text';
+            text.innerText = 'Mindary';
+            body.appendChild(text);
+
+            // Adjust text color based on background
+            const stripes = document.querySelectorAll('.stripe');
+            stripes.forEach((stripe, index) => {
+                if (index % 2 === 0) {
+                    text.style.color = 'white';
+                } else {
+                    text.style.color = 'black';
+                }
+            });
         }
 
         window.addEventListener('resize', createStripes);
